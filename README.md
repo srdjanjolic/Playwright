@@ -4,69 +4,97 @@ This repository contains an end-to-end (E2E) test for simulating a candidate app
 
 ---
 
-## Table of Contents
-
-1. [Test Planning](#1-test-planning)
-   - [Scope of the E2E Test](#scope-of-the-e2e-test)
-   - [Key User Flows and Scenarios](#key-user-flows-and-scenarios)
-   - [Test Data](#test-data)
-   - [Potential Challenges](#potential-challenges)
-2. [Test Implementation](#2-test-implementation)
-   - [Playwright Code Overview](#playwright-code-overview)
-3. [Challenge Documentation](#3-challenge-documentation)
-   - [Challenges Encountered](#challenges-encountered)
-   - [Selector Strategy](#selector-strategy)
-4. [Submitting Your Challenge](#4-submitting-your-challenge)
-
----
-
-## 1. Test Planning
-
-### Scope of the E2E Test
-The end-to-end (E2E) test will simulate a candidate applying for a job on the Hokify platform. The test will cover:
-1. Navigating to the job detail page.
-2. Starting the application process.
-3. Creating a fake account.
-4. Filling out the application form (education, experience, skills).
-5. Submitting the application and verifying the confirmation screen.
+##  Table of Contents
+- [Test Planning](#test-planning)
+  - [Scope of the E2E Test](#scope-of-the-e2e-test)
+  - [Key User Flows and Scenarios](#key-user-flows-and-scenarios)
+  - [Test Data](#test-data)
+  - [Potential Challenges](#challenges-faced)
+- [Test Implementation](#test-implementation)
+  - [Playwright Code Overview](#playwright-code-overview)
+- [Installation & Setup](#installation--setup)
+- [Running the Test](#running-the-test)
+- [Folder Structure](#folder-structure)
+- [Reporting & Logging](#reporting--logging)
+- [Future Improvements](#future-improvements)
+- [Submitting Your Challenge](#submitting-your-challenge)
 
 ---
 
-### Key User Flows and Scenarios
+##  Test Planning
 
-#### Job Application Flow
-1. Navigate to the job detail page.
-2. Click **"Jetzt bewerben"** (Apply Now).
-3. Accept cookies (if a modal appears).
-4. Start the application process.
+###  Scope of the E2E Test
+The end-to-end (E2E) test simulates a candidate applying for a job on the Hokify platform. The test covers:
 
-#### Account Creation Flow
-1. Fill in fake email and password.
-2. Accept privacy policy.
-3. Submit the form to create an account.
-
-#### Application Form Flow
-1. Fill in education details (e.g., school, degree, start date).
-2. Fill in work experience (e.g., job title, company, description).
-3. Add skills (e.g., languages, IT skills, driving license).
-4. Submit the application.
-
-#### Confirmation Flow
-1. Verify the application is submitted successfully.
-2. Check for a confirmation message or screen.
-
-## Challenges Faced
-
-1. **Dynamic Selectors** - Elements had changing attributes, so stable selectors were used.
-2. **Session Handling** - Ensured test stability by using fresh login sessions.
-3. **CAPTCHA Issues** - If encountered, manual intervention might be required.
-4. **Date Picker Issues** - The date picker component was difficult to interact with as it required multiple steps to open and select a date.
-5. **Missing Valid Selectors** - Many elements did not have valid `id` attributes or unique selectors, requiring alternative ways like `data-cy`, `XPath`, or text-based locators.
+ Navigating to the job detail page.  
+ Starting the application process.  
+ Creating a fake account.  
+ Filling out the application form (education, experience, skills).  
+ Submitting the application and verifying the confirmation screen.  
 
 ---
 
-### Test Data
+###  Key User Flows and Scenarios
 
-#### Fake Account
-- **Email**: `mikimikic9555@gmail.com`
-- **Password**: `Administrator9`
+#### **1 Job Application Flow**
+- Navigate to the job detail page.
+- Click **"Jetzt bewerben"** (Apply Now).
+- Accept cookies (if a modal appears).
+- Start the application process.
+
+#### **2️ Account Creation Flow**
+- Fill in **fake email and password**.
+- Accept privacy policy.
+- Submit the form to create an account.
+
+#### **3️ Application Form Flow**
+- Fill in **education details** (e.g., school, degree, start date).
+- Fill in **work experience** (e.g., job title, company, description).
+- Add **skills** (e.g., languages, IT skills, driving license).
+- Submit the application.
+
+#### **4️ Confirmation Flow**
+- Verify the **application is submitted successfully**.
+- Check for a **confirmation message or screen**.
+
+---
+
+##  Challenges Faced
+
+1. **Dynamic Selectors** - Elements had changing attributes, so stable selectors were used.  
+2. **Session Handling** - Ensured test stability by using fresh login sessions.  
+3. **CAPTCHA Issues** - If encountered, manual intervention might be required.  
+4. **Date Picker Issues** - The date picker component was difficult to interact with as it required multiple steps to open and select a date.  
+5. **Missing Valid Selectors** - Many elements did not have valid `id` attributes or unique selectors, requiring alternative ways like `data-cy`, `XPath`, or text-based locators.  
+
+---
+
+##  Test Data
+
+### ** Fake Account**
+- **Email:** mikimikic9555@gmail.com  
+- **Password:** Administrator9  
+
+>  **Note:** Do **not** use this account for real applications. It was created for testing purposes only.
+
+---
+
+## Test Implementation
+
+### 📌 Playwright Code Overview
+The test uses **Playwright (JavaScript/TypeScript)** and follows a structured approach:
+- **Test files** are located in the `tests/` folder.
+- **Reusable helper functions** (e.g., clicking buttons, filling inputs) are in `helpers/`.
+
+---
+
+## Installation & Setup
+
+### **Prerequisites**
+- Node.js installed ([Download here](https://nodejs.org/))
+- Playwright installed via npm
+
+### **1️ Clone the repository**
+```sh
+git clone  https://github.com/srdjanjolic/Playwright.git
+cd hokify-test
